@@ -17,16 +17,12 @@ class Login extends Component {
         }
     }
 
-    handleOnChangeUsername = (event) => {
+    handleOnChangeInput = (event, id) => {
+        let copyState = { ...this.state };
+        copyState[id] = event.target.value;
         this.setState({
-            username: event.target.value
-        })
-    }
-
-    handleOnChangePassword = (event) => {
-        this.setState({
-            password: event.target.value
-        })
+            ...copyState
+        });
     }
 
     handleLogin = async () => {
@@ -72,7 +68,7 @@ class Login extends Component {
                             <input type='text'
                                 className='form-control'
                                 placeholder='Enter your username'
-                                onChange={(event) => this.handleOnChangeUsername(event)}
+                                onChange={(event) => this.handleOnChangeInput(event, 'username')}
                             />
                         </div>
                         <div className='col-12 form-group login-input'>
@@ -81,7 +77,7 @@ class Login extends Component {
                                 <input type={this.state.isShowPassword ? 'text' : 'password'}
                                     className='form-control'
                                     placeholder='Enter your password'
-                                    onChange={(event) => this.handleOnChangePassword(event)}
+                                    onChange={(event) => this.handleOnChangeInput(event, 'password')}
                                 />
                                 <span onClick={() => { this.handleShowPassword() }}>
                                     <i class={this.state.isShowPassword ? 'fas fa-eye' : 'fas fa-eye-slash'}  ></i>
