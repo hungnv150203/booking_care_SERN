@@ -1,4 +1,25 @@
 {
+    "home-header": {
+        "specialty": "Medical specialty",
+        "search-doctor": "Find doctor by specialty",
+        "health-facility": "Health facility",
+        "select-room": "Choose hospital, room",
+        "doctor": "Doctor",
+        "select-doctor": "Choose a good doctor",
+        "exam-package": "Health examination package",
+        "general-exam": "General health examination",
+        "support": "Support"
+    },
+    "banner": {
+        "title1": "MEDICAL PLATFORM",
+        "title2": "COMPREHENSIVE HEALTH CARE",
+        "child1": "Specialized examination",
+        "child2": "Remote examination",
+        "child3": "General examination",
+        "child4": "Medical test",
+        "child5": "Mental health",
+        "child6": "Dental examination"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",
