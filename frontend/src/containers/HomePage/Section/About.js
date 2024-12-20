@@ -15,10 +15,10 @@ class About extends Component {
                         <iframe width="100%" height="400px"
                             src="https://www.youtube.com/embed/OASGscJQXp0"
                             title="BookingCare: Hệ thống đặt khám trực tuyến"
-                            frameborder="0"
+                            frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen>
                         </iframe>
                     </div>
                     <div className='content-right'>
