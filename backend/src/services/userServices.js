@@ -1,7 +1,5 @@
-import e from "express";
 import db from "../models/index";
 import bcrypt from 'bcryptjs';
-import { raw } from "body-parser";
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -23,7 +21,7 @@ let handleUserLogin = (email, password) => {
             let isUserExist = await checkUserEmail(email);
             if (isUserExist) {
                 let user = await db.User.findOne({
-                    attributes: ['email', 'password', 'roleId'],
+                    attributes: ['email', 'password', 'roleId', 'firstName', 'lastName'],
                     where: { email: email }
                 });
                 if (user) {
@@ -189,11 +187,35 @@ let deleteUser = (userId) => {
     })
 }
 
+let getAllcodeService = (typeInput) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!typeInput) {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing required parameters'
+                })
+            } else {
+                let res = {};
+                let allcode = await db.Allcode.findAll({
+                    where: { type: typeInput }
+                });
+                res.errCode = 0;
+                res.data = allcode;
+                resolve(res);
+            }
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
     checkUserEmail: checkUserEmail,
     getAllUsers: getAllUsers,
     createNewUser: createNewUser,
     updateUserData: updateUserData,
-    deleteUser: deleteUser
+    deleteUser: deleteUser,
+    getAllcodeService: getAllcodeService
 }
