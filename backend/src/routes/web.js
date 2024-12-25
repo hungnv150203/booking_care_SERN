@@ -21,9 +21,9 @@ let initWebRoutes = (app) => {
     router.put('/api/edit-user', userController.handleEditUser);
     router.delete('/api/delete-user', userController.handleDeleteUser);
 
-    router.get('/allcode')
+    router.get('/api/allcode', userController.getAllcode)
 
-    return app.use("/", router, userController.getAllcode);
+    return app.use("/", router);
 };
 
 module.exports = initWebRoutes;
