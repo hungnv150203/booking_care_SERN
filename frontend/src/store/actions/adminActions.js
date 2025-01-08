@@ -274,7 +274,6 @@ export const fetchAllScheduleTime = () => {
                 })
             }
         } catch (e) {
-            console.log('FETCH_ALLCODE_SCHEDULE_TIME_FAILED', e)
             dispatch({
                 type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILED
             })
@@ -282,36 +281,45 @@ export const fetchAllScheduleTime = () => {
     }
 }
 
-// export const getRequiredDoctorInfor = () => {
-//     return async (dispatch, getState) => {
-//         try {
-//             dispatch({ type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_START })
+export const getRequiredDoctorInfo = () => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch({ type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_START })
 
-//             let resPrice = await getAllcodeService("PRICE");
-//             let resPayment = await getAllcodeService("PAYMENT");
-//             let resProvince = await getAllcodeService("PROVINCE");
-//             let resSpecialty = await getAllSpecialty();
-//             let resClinic = await getAllClinic();
+            let resPrice = await getAllcodeService("PRICE");
+            let resPayment = await getAllcodeService("PAYMENT");
+            let resProvince = await getAllcodeService("PROVINCE");
+            // let resSpecialty = await getAllSpecialty();
+            // let resClinic = await getAllClinic();
 
-//             if (resPrice && resPrice.errCode === 0
-//                 && resPayment && resPayment.errCode === 0
-//                 && resProvince && resProvince.errCode === 0
-//                 && resSpecialty && resSpecialty.errCode === 0
-//                 && resClinic && resClinic.errCode === 0) {
-//                 let data = {
-//                     resPrice: resPrice.data,
-//                     resPayment: resPayment.data,
-//                     resProvince: resProvince.data,
-//                     resSpecialty: resSpecialty.data,
-//                     resClinic: resClinic.data
-//                 }
-//                 dispatch(fetchRequiredDoctorInforSuccess(data))
-//             } else {
-//                 dispatch(fetchRequiredDoctorInforFailed());
-//             }
-//         } catch (e) {
-//             dispatch(fetchRequiredDoctorInforFailed());
-//             console.log('GenderStart Error', e)
-//         }
-//     }
-// }
+            if (resPrice && resPrice.errCode === 0
+                && resPayment && resPayment.errCode === 0
+                && resProvince && resProvince.errCode === 0
+                // && resSpecialty && resSpecialty.errCode === 0
+                // && resClinic && resClinic.errCode === 0
+            ) {
+                let data = {
+                    resPrice: resPrice.data,
+                    resPayment: resPayment.data,
+                    resProvince: resProvince.data,
+                    // resSpecialty: resSpecialty.data,
+                    // resClinic: resClinic.data
+                }
+                dispatch(fetchRequiredDoctorInfoSuccess(data))
+            } else {
+                dispatch(fetchRequiredDoctorInfoFailed());
+            }
+        } catch (e) {
+            dispatch(fetchRequiredDoctorInfoFailed());
+        }
+    }
+}
+
+export const fetchRequiredDoctorInfoSuccess = (allRequiredData) => ({
+    type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_SUCCESS,
+    data: allRequiredData
+})
+
+export const fetchRequiredDoctorInfoFailed = () => ({
+    type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_FAILED
+})
