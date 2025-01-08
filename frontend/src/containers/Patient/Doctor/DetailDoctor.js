@@ -4,10 +4,9 @@ import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailDoctor.scss';
 import { getDetailInfoDoctor } from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
-// import DoctorSchedule from './DoctorSchedule';
-// import DoctorExtrainfor from './DoctorExtrainfor';
-// import LoadingOverlay from 'react-loading-overlay';
-// import BounceLoader from 'react-spinners/BounceLoader';
+import DoctorSchedule from './DoctorSchedule';
+import DoctorExtrainfo from './DoctorExtrainfo';
+
 class DetailDoctor extends Component {
 
     constructor(props) {
@@ -40,8 +39,8 @@ class DetailDoctor extends Component {
         let { detailDoctor } = this.state;
         let nameVi = '', nameEn = '';
         if (detailDoctor && detailDoctor.positionData) {
-            nameVi = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName} ${detailDoctor.firstName}`;
-            nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName} ${detailDoctor.lastName}`;
+            nameVi = `${detailDoctor.positionData.valueVI}, ${detailDoctor.lastName} ${detailDoctor.firstName}`;
+            nameEn = `${detailDoctor.positionData.valueEN}, ${detailDoctor.firstName} ${detailDoctor.lastName}`;
         }
         return (
             <>
@@ -70,12 +69,12 @@ class DetailDoctor extends Component {
                     </div>
                     <div className="schedule-doctor">
                         <div className="content-left">
-                            {/* <DoctorSchedule
+                            <DoctorSchedule
                                 doctorIdFromParent={this.state.currentDoctorId}
-                            /> */}
+                            />
                         </div>
                         <div className="content-right">
-                            {/* <DoctorExtrainfor doctorIdFromParent={this.state.currentDoctorId} /> */}
+                            <DoctorExtrainfo doctorIdFromParent={this.state.currentDoctorId} />
                         </div>
                     </div>
                     <div className="detail-info-doctor">
